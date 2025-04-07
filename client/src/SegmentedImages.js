@@ -8,7 +8,7 @@ function SegmentedImages() {
 
   useEffect(() => {
     setLoading(true);
-    fetch('/api/generated-images')
+    fetch('http://localhost:8000/api/generated-images')
       .then(response => response.json())
       .then(data => {
         setImages(data.images);
@@ -22,7 +22,7 @@ function SegmentedImages() {
 
   const handleCalculateSimilarity = async () => {
     try {
-      const response = await fetch('/api/calculate-similarity', {
+      const response = await fetch('http://localhost:8000/api/calculate-similarity', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
       });
@@ -58,7 +58,7 @@ function SegmentedImages() {
             <div className="col" key={index}>
               <div className="card">
                 <img
-                  src={`/static/segmented_images/${img}`}
+                  src={`http://localhost:8000/static/segmented_images/${img}`}
                   alt={`Segmented ${index}`}
                   className="card-img-top"
                   style={{ objectFit: 'contain', maxHeight: '200px' }}

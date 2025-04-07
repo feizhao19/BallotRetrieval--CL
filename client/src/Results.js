@@ -5,7 +5,7 @@ function Results() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('/api/result')
+    fetch('http://localhost:8000/api/result')
       .then(response => {
         if (!response.ok) {
           throw new Error("Network response was not OK");

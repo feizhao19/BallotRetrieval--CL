@@ -156,6 +156,46 @@ npm start
 4. Results page:
     - this page reads the results from reuslt.json and display them
 
+## Demos
+1. Annotate Uploaded Image
+[[Watch the demo]](https://youtu.be/AFoibjyXcJY)
+2. Annotate Combined Image
+[[Watch the demo]](https://youtu.be/mHSrs_L0WWo)
+3. Remove Cache Effets
+[[Watch the demo]](https://youtu.be/J2fIXk0XuUk)
+
+
+## Trouboushooting
+If see error similar to this
+```
+Access to fetch at 'http://localhost:5000/api/export-combined' from origin 'http://localhost:3000' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
+```
+
+1. Try restart the app.py and the web app by re running `python app.py` and `npm start` in the respective terminal
+2. Open a new terminal
+    ```bash
+    # try pull the api and see the response
+    curl -i -X OPTIONS http://localhost:5000/api/export-combined
+    ```
+    If output response is success (status code 200), restart app.py and the web app. It should work, there is no problem.
+
+    If output is something like this
+    ```bash
+    HTTP/1.1 403 Forbidden
+    Content-Length: 0
+    Server: AirTunes/845.5.1 # this means port 5000 on localhost is being occupied by another process
+    X-Apple-ProcessingTime: 0
+    X-Apple-RequestReceivedTimestamp: 646419282
+    ```
+    Change the port number to another (like 6000/8000/8200...) in app.py
+    ```python
+    if __name__ == '__main__':
+        app.run(debug=True, host='localhost', port=8000) # change the port number here
+    ```
+    Change the port number to the new one for all front end by going to `CombineImages.js`,` ImageAnnotation.js`, `SegmentedImages.js` and `Results.js`,
+    replace all "localhost:{old port number}" to "localhost:{new port number}"
+
+    
 ## Some Notes
 ### segment_anything.py
 Warning: only works with transformers==4.47.1, transformers-4.51.0 is too advanced and it will cause NameError: name 'init_empty_weights' is not defined when running segment_anything.py

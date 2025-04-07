@@ -18,7 +18,7 @@ function ImageAnnotation() {
 
   // Fetch the combined image name from the backend when the component mounts.
   useEffect(() => {
-    fetch('http://127.0.0.1:5000/api/get-combined-image')
+    fetch('http://localhost:8000/api/get-combined-image')
       .then(res => res.json())
       .then(data => {
         setCombinedImageName(data.combinedImageName);
@@ -46,7 +46,7 @@ function ImageAnnotation() {
     if (!file) return;
     const formData = new FormData();
     formData.append('image', file);
-    fetch('http://127.0.0.1:5000/api/upload-image', {
+    fetch('http://localhost:8000/api/upload-image', {
       method: 'POST',
       body: formData,
     })
@@ -146,7 +146,7 @@ function ImageAnnotation() {
   // Save boxes and picture name to server to trigger segmentation.
   const handleSegmentation = async () => {
     try {
-      const response = await fetch('http://127.0.0.1:5000/api/save-boxes', {
+      const response = await fetch('http://localhost:8000/api/save-boxes', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ boxes, picName }),
@@ -164,7 +164,7 @@ function ImageAnnotation() {
   // Use Combined Image: load the combined image from the uploads folder.
   const handleUseCombinedImage = () => {
     if (!combinedImageName) return;
-    const url = `http://127.0.0.1:5000/uploads/${combinedImageName}`;
+    const url = `http://localhost:8000/uploads/${combinedImageName}`;
     const img = new Image();
     img.crossOrigin = "Anonymous";
     img.onload = () => {
@@ -184,7 +184,7 @@ function ImageAnnotation() {
   // Clear cache (remove segmented images and result.json).
   const handleClearCache = async () => {
     try {
-      const response = await fetch('http://127.0.0.1:5000/api/clear-cache', {
+      const response = await fetch('http://localhost:8000/api/clear-cache', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
       });
@@ -204,7 +204,7 @@ function ImageAnnotation() {
     let intervalId;
     if (processing) {
       intervalId = setInterval(() => {
-        fetch('http://127.0.0.1:5000/api/generated-images')
+        fetch('http://localhost:8000/api/generated-images')
           .then((res) => res.json())
           .then((data) => {
             if (data.images && data.images.length > 0) {
