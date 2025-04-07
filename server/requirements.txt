@@ -1,0 +1,7 @@
+numpy
+matplotlib
+opencv-python
+torch
+transformers==4.47.1
+Pillow
+requests
