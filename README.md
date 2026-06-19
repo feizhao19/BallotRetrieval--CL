@@ -1,8 +1,8 @@
-# 🗳️ MarkMatch: Same-Hand Stuffing Detection
+# 🗳️ BallotRetrieval (MarkMatch)
 
-MarkMatch is an end-to-end computer vision and retrieval framework for detecting potential same-hand ballot stuffing through visual similarity analysis. Leveraging contrastive learning, the framework learns discriminative representations of ballot marks and retrieves stylistically similar instances from a candidate pool for investigation.
+[ICME 2026] Computer Vision and Contrastive Retrieval Learning for Same-Hand Ballot Analysis and Election Integrity Investigation.
 
-MarkMatch provides an end-to-end web application for detecting same-hand ballot stuffing using image similarity analysis. It allows users to:
+BallotRetrieval (MarkMatch) is an end-to-end computer vision and contrastive retrieval learning framework for same-hand ballot analysis and election integrity investigation. Given a ballot mark query, the framework learns discriminative visual representations through contrastive learning and retrieves stylistically similar ballot marks from a candidate pool, enabling scalable detection of potential same-hand ballot stuffing through visual similarity analysis.
 
 The system allows users to:
 
