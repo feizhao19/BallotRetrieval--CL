@@ -1,0 +1,10 @@
+
+# Ignore virtual environments
+venv/
+data/
+.DS_Store
+**/.DS_Store
+**/result.json
+**/package-lock.json
+**/model_weight.h5
+static/segmented_images/examples/
