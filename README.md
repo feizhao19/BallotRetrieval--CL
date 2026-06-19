@@ -1,19 +1,38 @@
 # 🗳️ MarkMatch: Same-Hand Stuffing Detection
 
+MarkMatch is an end-to-end computer vision and retrieval framework for detecting potential same-hand ballot stuffing through visual similarity analysis. Leveraging contrastive learning, the framework learns discriminative representations of ballot marks and retrieves stylistically similar instances from a candidate pool for investigation.
+
 MarkMatch provides an end-to-end web application for detecting same-hand ballot stuffing using image similarity analysis. It allows users to:
 
-- Upload and combine ballot images,
-- Annotate areas of interest for segmentation,
-- Run the MarkMatch model to compute visual similarity scores between segmented regions,
-- Visualize ranked similarity results for manual verification.
+The system allows users to:
+
+* Upload and process scanned ballot images,
+* Segment ballot marks using SAM-based prompt inputs (bounding boxes or points),
+* Extract visual embeddings through a deep computer vision encoder,
+* Retrieve and rank the most similar ballot marks using contrastive retrieval learning,
+* Visualize similarity scores through ranking tables and heatmaps,
+* Support transparent and scalable election auditing through human-in-the-loop verification.
 
 This repository accompanies the paper:
 
 **MarkMatch: Same-Hand Stuffing Detection**  
 *Fei Zhao, Runlin Zhang, Chengcui Zhang, Nitesh Saxena*  
 Published in **IEEE International Conference on Multimedia & Expo (ICME) 2025**  
-[IEEE Xplore](https://ieeexplore.ieee.org/abstract/document/11152127) · [arXiv:2505.07032](https://arxiv.org/abs/2505.07032)
+[IEEE Xplore](https://ieeexplore.ieee.org/abstract/document/11152127)
 
+## Overview
+
+### Contrastive Learning Model
+
+MarkMatch uses a contrastive learning framework with a DenseNet encoder to learn normalized embeddings for handwritten marks. Same-hand mark pairs are pulled together while non-matching pairs are pushed apart via dot-product similarity.
+
+![Contrastive learning model architecture](doc/encoder.png)
+
+### MarkMatch Interface
+
+*MarkMatch* interface. The system segments marks using prompt-based inputs (box or point), computes similarity between the query (green) and candidates (orange), and visualizes softmax-normalized scores via heatmap and ranking. To preserve privacy, marks are anonymized using letter-number aliases (e.g., `alias5_0`). In this example, three top-ranked matches from the same ballot (`alias5`) are retrieved for the query mark `alias23_0`, and manual review confirms both ballots were filled by the same individual.
+
+![MarkMatch interface visualization](doc/visualization.png)
 
 
 ### Acknowledgement
