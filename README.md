@@ -14,6 +14,8 @@ The system allows users to:
 
 To support flexible ballot mark extraction, we adapt and customize the **Segment Anything Model (SAM)** for **prompt-based ballot mark segmentation**. The customized SAM module enables efficient extraction of handwritten ballot marks from scanned ballots using simple **bounding-box or point prompts**, providing high-quality mark candidates for downstream **retrieval and similarity analysis**.
 
+> **Note:** The trained model weights (`server/model_weight.h5`) are not included in this repository. Please contact <u>Fei Zhao</u> to request the weight file.
+
 This repository accompanies our paper:
 
 **MarkMatch: Same-Hand Stuffing Detection**  
