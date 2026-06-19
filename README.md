@@ -11,8 +11,8 @@ This repository accompanies the paper:
 
 **MarkMatch: Same-Hand Stuffing Detection**  
 *Fei Zhao, Runlin Zhang, Chengcui Zhang, Nitesh Saxena*  
-Accepted at **IEEE International Conference on Multimedia & Expo (ICME) 2025**  
-[arXiv:2505.07032](https://arxiv.org/abs/2505.07032)
+Published in **IEEE International Conference on Multimedia & Expo (ICME) 2025**  
+[IEEE Xplore](https://ieeexplore.ieee.org/abstract/document/11152127) · [arXiv:2505.07032](https://arxiv.org/abs/2505.07032)
 
 
 
@@ -21,15 +21,16 @@ This work was supported by NSF CNS-2154589 and 2154507, “Collaborative Researc
 
 If you find this work helpful, please consider citing:
 ```bibtex
-@misc{zhao2025markmatchsamehandstuffingdetection,
-  title={MarkMatch: Same-Hand Stuffing Detection},
-  author={Fei Zhao and Runlin Zhang and Chengcui Zhang and Nitesh Saxena},
+@INPROCEEDINGS{11152127,
+  author={Zhao, Fei and Zhang, Runlin and Zhang, Chengcui and Saxena, Nitesh},
+  booktitle={2025 IEEE International Conference on Multimedia and Expo (ICME)}, 
+  title={MarkMatch: Same-Hand Stuffing Detection}, 
   year={2025},
-  eprint={2505.07032},
-  archivePrefix={arXiv},
-  primaryClass={cs.CV},
-  url={https://arxiv.org/abs/2505.07032}
-}
+  volume={},
+  number={},
+  pages={1-2},
+  keywords={Deep learning;Visualization;Noise;Contrastive learning;Ballot Stuffing Detection;Deep Learning},
+  doi={10.1109/ICMEW68306.2025.11152127}}
 ```
 
 # Getting Started
@@ -197,13 +198,13 @@ npm start
 4. Results page:
     - this page reads the results from reuslt.json and display them
 
-## Demos
+<!-- ## Demos
 1. Annotate Uploaded Image
 [[Watch the demo]](https://youtu.be/AFoibjyXcJY)
 2. Annotate Combined Image
 [[Watch the demo]](https://youtu.be/mHSrs_L0WWo)
 3. Remove Cache Effets
-[[Watch the demo]](https://youtu.be/J2fIXk0XuUk)
+[[Watch the demo]](https://youtu.be/J2fIXk0XuUk) -->
 
 
 ## Trouboushooting
