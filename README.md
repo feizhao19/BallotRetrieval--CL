@@ -17,7 +17,7 @@ To support flexible ballot mark extraction, we adapt and customize the **Segment
 This repository accompanies our paper:
 
 **MarkMatch: Same-Hand Stuffing Detection**  
-*Fei Zhao, Runlin Zhang, Chengcui Zhang, Nitesh Saxena*  
+*<u>Fei Zhao</u>, Runlin Zhang, Chengcui Zhang, Nitesh Saxena*  
 Published in **IEEE International Conference on Multimedia & Expo (ICME) 2025**  
 [IEEE Xplore](https://ieeexplore.ieee.org/abstract/document/11152127)
 
@@ -27,13 +27,17 @@ Published in **IEEE International Conference on Multimedia & Expo (ICME) 2025**
 
 BallotRetrieval uses a contrastive learning framework with a DenseNet encoder to learn normalized embeddings for handwritten marks. Same-hand mark pairs are pulled together while non-matching pairs are pushed apart via dot-product similarity.
 
-<img src="doc/encoder.png" alt="Contrastive learning model architecture" width="70%">
+<p align="center">
+  <img src="doc/encoder.png" alt="Contrastive learning model architecture" width="70%">
+</p>
 
 ### MarkMatch Interface
 
 *BallotRetrieval* interface. The system segments marks using prompt-based inputs (box or point), computes similarity between the query (green) and candidates (orange), and visualizes softmax-normalized scores via heatmap and ranking. To preserve privacy, marks are anonymized using letter-number aliases (e.g., `alias5_0`). In this example, three top-ranked matches from the same ballot (`alias5`) are retrieved for the query mark `alias23_0`, and manual review confirms both ballots were filled by the same individual.
 
-<img src="doc/visualization.png" alt="MarkMatch interface visualization" width="70%">
+<p align="center">
+  <img src="doc/visualization.png" alt="MarkMatch interface visualization" width="70%">
+</p>
 
 
 # Getting Started
