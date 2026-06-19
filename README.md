@@ -1,17 +1,20 @@
 # 🗳️ BallotRetrieval (MarkMatch)
 
-BallotRetrieval (MarkMatch) is an end-to-end computer vision and contrastive retrieval learning framework for same-hand ballot analysis and election integrity investigation. Given a ballot mark query, the framework learns discriminative visual representations through contrastive learning and retrieves stylistically similar ballot marks from a candidate pool, enabling scalable detection of potential same-hand ballot stuffing through visual similarity analysis.
+**BallotRetrieval (MarkMatch)** is an end-to-end **computer vision** and **contrastive retrieval learning** framework for same-hand ballot analysis and election integrity investigation. Given a ballot mark query, the framework learns discriminative **visual representations** through **contrastive learning** and retrieves stylistically similar ballot marks from a candidate pool, enabling scalable detection of potential same-hand ballot stuffing through **visual similarity analysis**.
 
 The system allows users to:
 
 * Upload and process scanned ballot images,
-* Segment ballot marks using SAM-based prompt inputs (bounding boxes or points),
-* Extract visual embeddings through a deep computer vision encoder,
-* Retrieve and rank the most similar ballot marks using contrastive retrieval learning,
-* Visualize similarity scores through ranking tables and heatmaps,
-* Support transparent and scalable election auditing through human-in-the-loop verification.
+* Segment ballot marks using **SAM-based** prompt inputs (bounding boxes or points),
+* Extract **visual embeddings** through a deep computer vision encoder,
+* Retrieve and rank the most similar ballot marks using **contrastive retrieval learning**,
+* Visualize similarity scores through **ranking tables and heatmaps**,
+* Support transparent and scalable election auditing through **human-in-the-loop verification**.
 
-This repository accompanies the paper:
+
+To support flexible ballot mark extraction, we adapt and customize the **Segment Anything Model (SAM)** for **prompt-based ballot mark segmentation**. The customized SAM module enables efficient extraction of handwritten ballot marks from scanned ballots using simple **bounding-box or point prompts**, providing high-quality mark candidates for downstream **retrieval and similarity analysis**.
+
+This repository accompanies our paper:
 
 **MarkMatch: Same-Hand Stuffing Detection**  
 *Fei Zhao, Runlin Zhang, Chengcui Zhang, Nitesh Saxena*  
@@ -22,33 +25,16 @@ Published in **IEEE International Conference on Multimedia & Expo (ICME) 2025**
 
 ### Contrastive Learning Model
 
-MarkMatch uses a contrastive learning framework with a DenseNet encoder to learn normalized embeddings for handwritten marks. Same-hand mark pairs are pulled together while non-matching pairs are pushed apart via dot-product similarity.
+BallotRetrieval uses a contrastive learning framework with a DenseNet encoder to learn normalized embeddings for handwritten marks. Same-hand mark pairs are pulled together while non-matching pairs are pushed apart via dot-product similarity.
 
 <img src="doc/encoder.png" alt="Contrastive learning model architecture" width="70%">
 
 ### MarkMatch Interface
 
-*MarkMatch* interface. The system segments marks using prompt-based inputs (box or point), computes similarity between the query (green) and candidates (orange), and visualizes softmax-normalized scores via heatmap and ranking. To preserve privacy, marks are anonymized using letter-number aliases (e.g., `alias5_0`). In this example, three top-ranked matches from the same ballot (`alias5`) are retrieved for the query mark `alias23_0`, and manual review confirms both ballots were filled by the same individual.
+*BallotRetrieval* interface. The system segments marks using prompt-based inputs (box or point), computes similarity between the query (green) and candidates (orange), and visualizes softmax-normalized scores via heatmap and ranking. To preserve privacy, marks are anonymized using letter-number aliases (e.g., `alias5_0`). In this example, three top-ranked matches from the same ballot (`alias5`) are retrieved for the query mark `alias23_0`, and manual review confirms both ballots were filled by the same individual.
 
 <img src="doc/visualization.png" alt="MarkMatch interface visualization" width="70%">
 
-
-### Acknowledgement
-This work was supported by NSF CNS-2154589 and 2154507, “Collaborative Research: SaTC: CORE: Medium: Bubble Aid: Assistive AI to Improve the Robustness and Security of Reading HandMarked Ballots,” $1,200,000, 10/01/2022-09/30/2026.
-
-If you find this work helpful, please consider citing:
-```bibtex
-@INPROCEEDINGS{11152127,
-  author={Zhao, Fei and Zhang, Runlin and Zhang, Chengcui and Saxena, Nitesh},
-  booktitle={2025 IEEE International Conference on Multimedia and Expo (ICME)}, 
-  title={MarkMatch: Same-Hand Stuffing Detection}, 
-  year={2025},
-  volume={},
-  number={},
-  pages={1-2},
-  keywords={Deep learning;Visualization;Noise;Contrastive learning;Ballot Stuffing Detection;Deep Learning},
-  doi={10.1109/ICMEW68306.2025.11152127}}
-```
 
 # Getting Started
 
@@ -261,5 +247,22 @@ Access to fetch at 'http://localhost:5000/api/export-combined' from origin 'http
 ### segment_anything.py
 Warning: only works with transformers==4.47.1, transformers-4.51.0 is too advanced and it will cause NameError: name 'init_empty_weights' is not defined when running segment_anything.py
 
+
+### Acknowledgement
+This work was supported by NSF CNS-2154589 and 2154507, “Collaborative Research: SaTC: CORE: Medium: Bubble Aid: Assistive AI to Improve the Robustness and Security of Reading HandMarked Ballots,” $1,200,000, 10/01/2022-09/30/2026.
+
+If you find this work helpful, please consider citing:
+```bibtex
+@INPROCEEDINGS{11152127,
+  author={Zhao, Fei and Zhang, Runlin and Zhang, Chengcui and Saxena, Nitesh},
+  booktitle={2025 IEEE International Conference on Multimedia and Expo (ICME)}, 
+  title={MarkMatch: Same-Hand Stuffing Detection}, 
+  year={2025},
+  volume={},
+  number={},
+  pages={1-2},
+  keywords={Deep learning;Visualization;Noise;Contrastive learning;Ballot Stuffing Detection;Deep Learning},
+  doi={10.1109/ICMEW68306.2025.11152127}}
+```
 
 
