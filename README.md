@@ -31,7 +31,7 @@ BallotRetrieval uses a contrastive learning framework with a DenseNet encoder to
   <img src="doc/encoder.png" alt="Contrastive learning model architecture" width="70%">
 </p>
 
-### MarkMatch Interface
+### BallotRetrieval Interface
 
 *BallotRetrieval* interface. The system segments marks using prompt-based inputs (box or point), computes similarity between the query (green) and candidates (orange), and visualizes softmax-normalized scores via heatmap and ranking. To preserve privacy, marks are anonymized using letter-number aliases (e.g., `alias5_0`). In this example, three top-ranked matches from the same ballot (`alias5`) are retrieved for the query mark `alias23_0`, and manual review confirms both ballots were filled by the same individual.
 
