@@ -2,6 +2,27 @@
 
 **BallotRetrieval (MarkMatch)** is an end-to-end **computer vision** and **contrastive retrieval learning** framework for same-hand ballot analysis and election integrity investigation. Given a ballot mark query, the framework learns discriminative **visual representations** through **contrastive learning** and retrieves stylistically similar ballot marks from a candidate pool, enabling scalable detection of potential same-hand ballot stuffing through **visual similarity analysis**.
 
+## Overview
+
+### BallotRetrieval Interface
+
+*BallotRetrieval* interface. The system segments marks using prompt-based inputs (box or point), computes similarity between the query (green) and candidates (orange), and visualizes softmax-normalized scores via heatmap and ranking. To preserve privacy, marks are anonymized using letter-number aliases (e.g., `alias5_0`). In this example, three top-ranked matches from the same ballot (`alias5`) are retrieved for the query mark `alias23_0`, and manual review confirms both ballots were filled by the same individual.
+
+<p align="center">
+  <img src="doc/visualization.png" alt="MarkMatch interface visualization" width="70%">
+</p>
+
+### Contrastive Learning Model
+
+BallotRetrieval uses a contrastive learning framework with a DenseNet encoder to learn normalized embeddings for handwritten marks. Same-hand mark pairs are pulled together while non-matching pairs are pushed apart via dot-product similarity.
+
+<p align="center">
+  <img src="doc/encoder.png" alt="Contrastive learning model architecture" width="49%">
+</p>
+
+
+## Introduction
+
 The system allows users to:
 
 * Upload and process scanned ballot images,
@@ -23,23 +44,6 @@ This repository accompanies our paper:
 Published in **IEEE International Conference on Multimedia & Expo (ICME) 2025**  
 [IEEE Xplore](https://ieeexplore.ieee.org/abstract/document/11152127)
 
-## Overview
-
-### BallotRetrieval Interface
-
-*BallotRetrieval* interface. The system segments marks using prompt-based inputs (box or point), computes similarity between the query (green) and candidates (orange), and visualizes softmax-normalized scores via heatmap and ranking. To preserve privacy, marks are anonymized using letter-number aliases (e.g., `alias5_0`). In this example, three top-ranked matches from the same ballot (`alias5`) are retrieved for the query mark `alias23_0`, and manual review confirms both ballots were filled by the same individual.
-
-<p align="center">
-  <img src="doc/visualization.png" alt="MarkMatch interface visualization" width="70%">
-</p>
-
-### Contrastive Learning Model
-
-BallotRetrieval uses a contrastive learning framework with a DenseNet encoder to learn normalized embeddings for handwritten marks. Same-hand mark pairs are pulled together while non-matching pairs are pushed apart via dot-product similarity.
-
-<p align="center">
-  <img src="doc/encoder.png" alt="Contrastive learning model architecture" width="49%">
-</p>
 
 
 # Getting Started
