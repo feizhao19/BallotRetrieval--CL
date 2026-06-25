@@ -231,8 +231,8 @@ def preprocess_single_image(image_path):
     # Invert the image (255 - pixel values)
     image = 255.0 - image
     
-    # Resize with cropping/padding to 51x51
-    image = tf.image.resize_with_crop_or_pad(image, 51, 51)
+    # Scale the full mark to fit inside 51x51 (preserve aspect ratio, pad if needed)
+    image = tf.image.resize_with_pad(image, 51, 51)
     
     # Normalize to [0, 1]
     image = image / 255.0
@@ -276,7 +276,7 @@ def preprocess_single_image(image_path):
     image = Image.open(image_path).convert('RGB')
     image = np.asarray(image).astype(np.float32)
     image = 255.0 - image
-    image = tf.image.resize_with_crop_or_pad(image, 51, 51)
+    image = tf.image.resize_with_pad(image, 51, 51)
     image = image / 255.0
     return image
 
