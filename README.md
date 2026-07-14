@@ -2,6 +2,14 @@
 
 **BallotRetrieval (MarkMatch)** is an end-to-end **computer vision** and **contrastive retrieval learning** framework for same-hand ballot analysis and election integrity investigation. Given a ballot mark query, the framework learns discriminative **visual representations** through **contrastive learning** and retrieves stylistically similar ballot marks from a candidate pool, enabling scalable detection of potential same-hand ballot stuffing through **visual similarity analysis**.
 
+This repository accompanies our paper:
+
+**MarkMatch: Same-Hand Stuffing Detection**  
+*<u>Fei Zhao</u>, Runlin Zhang, Chengcui Zhang, Nitesh Saxena*  
+Published in **IEEE International Conference on Multimedia & Expo (ICME) 2025**  
+[IEEE Xplore](https://ieeexplore.ieee.org/abstract/document/11152127)
+
+
 ## Overview
 
 ### BallotRetrieval Interface
@@ -36,13 +44,6 @@ The system allows users to:
 To support flexible ballot mark extraction, we adapt and customize the **Segment Anything Model (SAM)** for **prompt-based ballot mark segmentation**. The customized SAM module enables efficient extraction of handwritten ballot marks from scanned ballots using simple **bounding-box or point prompts**, providing high-quality mark candidates for downstream **retrieval and similarity analysis**.
 
 > **Note:** The trained model weights (`server/model_weight.h5`) are not included in this repository. Please contact <u>Fei Zhao</u> to request the weight file.
-
-This repository accompanies our paper:
-
-**MarkMatch: Same-Hand Stuffing Detection**  
-*<u>Fei Zhao</u>, Runlin Zhang, Chengcui Zhang, Nitesh Saxena*  
-Published in **IEEE International Conference on Multimedia & Expo (ICME) 2025**  
-[IEEE Xplore](https://ieeexplore.ieee.org/abstract/document/11152127)
 
 
 
